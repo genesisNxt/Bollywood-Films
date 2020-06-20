@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Actor" representedClassName=".Actor" syncable="YES" codeGenerationType="class">
+        <attribute name="done" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String"/>
+        <relationship name="parentFilm" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Film" inverseName="actor" inverseEntity="Film"/>
+    </entity>
+    <entity name="Film" representedClassName=".Film" syncable="YES" codeGenerationType="class">
+        <attribute name="name" attributeType="String"/>
+        <relationship name="actor" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Actor" inverseName="parentFilm" inverseEntity="Actor"/>
+    </entity>
+    <elements>
+        <element name="Actor" positionX="-27.32421875" positionY="34.140625" width="128" height="88"/>
+        <element name="Film" positionX="-270.4765625" positionY="11.7265625" width="128" height="73"/>
+    </elements>
+</model>
