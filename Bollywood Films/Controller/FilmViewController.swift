@@ -76,12 +76,20 @@ extension FilmViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: constant.goToActor, sender: self)
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! ActorTableViewController
+        if let indexPath = tableView.indexPathForSelectedRow {
+            destinationVC.selectedFilm = films[indexPath.row]
+        }
+        
+    }
 }
 // MARK:- SearchBar Delegate Methods
 extension FilmViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let request: NSFetchRequest<Film> = Film.fetchRequest()
         let predicate = NSPredicate(format: "name CONTAINS[cd] %@", searchBar.text!)
+        request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         request.predicate = predicate
         loadFilms(with: request)
         

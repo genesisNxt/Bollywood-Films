@@ -13,9 +13,15 @@ class ActorTableViewController: UITableViewController {
     var actor = [Actor]()
     let constant = Constant()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var selectedFilm: Film? {
+        didSet {
+            loadActor()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadActor()
+        //loadActor()
     }
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -37,6 +43,7 @@ class ActorTableViewController: UITableViewController {
             let newActor = Actor(context: self.context)
             newActor.name = textField.text
             newActor.done = false
+            newActor.parentFilm = self.selectedFilm
             self.actor.append(newActor)
             self.saveActor()
         }
@@ -56,8 +63,11 @@ class ActorTableViewController: UITableViewController {
         tableView.reloadData()
 }
     // MARK:- add load Functions
-            func loadActor(){
-                let request: NSFetchRequest<Actor> = Actor.fetchRequest()
+    func loadActor(with request: NSFetchRequest<Actor> = Actor.fetchRequest()){
+                //let request: NSFetchRequest<Actor> = Actor.fetchRequest()
+        let categoryPredicate = NSPredicate(format: "parentFilm.name MATCHES %@", selectedFilm!.name!)
+        request.predicate = categoryPredicate
+        
                 do {
                    actor = try context.fetch(request)
                 } catch  {
