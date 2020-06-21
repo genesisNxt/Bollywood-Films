@@ -46,13 +46,14 @@ class FilmViewController: UIViewController {
         tableView.reloadData()
     }
 // MARK:- Load Functions
-func loadFilms(){
-    let request: NSFetchRequest<Film> = Film.fetchRequest()
+    func loadFilms(with request: NSFetchRequest<Film> = Film.fetchRequest()){
+    //let request: NSFetchRequest<Film> = Film.fetchRequest()
     do {
        films = try context.fetch(request)
     } catch  {
         print("Error Loading\(error)")
     }
+        tableView.reloadData()
 }
     
 }
@@ -74,6 +75,21 @@ extension FilmViewController: UITableViewDataSource {
 extension FilmViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: constant.goToActor, sender: self)
+    }
+}
+// MARK:- SearchBar Delegate Methods
+extension FilmViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let request: NSFetchRequest<Film> = Film.fetchRequest()
+        let predicate = NSPredicate(format: "name CONTAINS[cd] %@", searchBar.text!)
+        request.predicate = predicate
+        loadFilms(with: request)
+        
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0 {
+            loadFilms()
+        }
     }
 }
 
