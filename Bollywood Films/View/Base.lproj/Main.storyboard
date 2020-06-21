@@ -30,7 +30,7 @@
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="qnF-UN-l3c"/>
-                                    <outlet property="delegate" destination="ofm-bI-23k" id="aNq-YS-Umb"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="3HM-s4-KUi"/>
                                 </connections>
                             </tableView>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="uY5-3z-zpz">
@@ -62,11 +62,47 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="q9F-zv-W3L" id="HoK-fs-P7x"/>
+                        <segue destination="YhZ-42-WCf" kind="show" identifier="goToActor" id="Opn-dL-TMQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="101.78571428571428"/>
+        </scene>
+        <!--Actor-->
+        <scene sceneID="lrF-5t-qJa">
+            <objects>
+                <tableViewController id="YhZ-42-WCf" customClass="ActorTableViewController" customModule="Bollywood_Films" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="eZk-YX-KcX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="actorCell" id="mgd-of-ufD">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mgd-of-ufD" id="GKb-Gg-y0j">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="YhZ-42-WCf" id="WZx-ut-zGU"/>
+                            <outlet property="delegate" destination="YhZ-42-WCf" id="hOf-WU-E23"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Actor" id="3py-gP-L0L">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="w3l-QE-MxD">
+                            <connections>
+                                <action selector="addActor:" destination="YhZ-42-WCf" id="Qf2-TP-HBZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fsX-QR-GY5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1847" y="114"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WuE-7P-b4h">

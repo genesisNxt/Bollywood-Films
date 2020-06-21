@@ -71,4 +71,9 @@ extension FilmViewController: UITableViewDataSource {
     }
 }
     // MARK:- TableView Delegate
+extension FilmViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: constant.goToActor, sender: self)
+    }
+}
 
