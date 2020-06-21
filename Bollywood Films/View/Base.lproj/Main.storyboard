@@ -78,7 +78,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="mgd-of-ufD">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="actorCell" id="mgd-of-ufD">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mgd-of-ufD" id="GKb-Gg-y0j">
@@ -92,7 +92,13 @@
                             <outlet property="delegate" destination="YhZ-42-WCf" id="hOf-WU-E23"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Actor" id="3py-gP-L0L"/>
+                    <navigationItem key="navigationItem" title="Actor" id="3py-gP-L0L">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="w3l-QE-MxD">
+                            <connections>
+                                <action selector="addActor:" destination="YhZ-42-WCf" id="Qf2-TP-HBZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fsX-QR-GY5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
